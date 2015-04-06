@@ -37,8 +37,8 @@ def main():
     for l in args.input:
         if l:
             data = parse_line(l)
+            item = ET.SubElement(root, "item")
             for key, value in data.iteritems():
-                item = ET.SubElement(root, "item")
                 ET.SubElement(item, "field", name=key).text = value
     tree = ET.ElementTree(root)
     tree.write(args.output, encoding='utf-8')
